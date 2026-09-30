@@ -1,13 +1,18 @@
 import { RegisterUI } from '@ui-pages';
 import { type SyntheticEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, type Location } from 'react-router-dom';
 
 import { registerUser } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
 
+type TLocationState = {
+  from?: Location;
+};
+
 export const Register = (): React.JSX.Element => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const error = useSelector((state) => state.user.error);
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -19,7 +24,13 @@ export const Register = (): React.JSX.Element => {
     void dispatch(registerUser({ name: userName, email, password }))
       .unwrap()
       .then(() => {
-        void navigate('/', { replace: true });
+        const state = location.state as TLocationState | null;
+        const from = state?.from;
+        const destination = from
+          ? `${from.pathname}${from.search}${from.hash}`
+          : '/';
+
+        void navigate(destination, { replace: true });
       })
       .catch(() => undefined);
   };
