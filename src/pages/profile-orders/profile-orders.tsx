@@ -1,5 +1,5 @@
-import { ProfileOrdersUI } from '@ui-pages';
 import { Preloader } from '@ui';
+import { ProfileOrdersUI } from '@ui-pages';
 import { useEffect } from 'react';
 
 import { getProfileOrders } from '../../services/feedSlice';

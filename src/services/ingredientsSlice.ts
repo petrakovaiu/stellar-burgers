@@ -1,6 +1,6 @@
+import { getIngredientsApi } from '@api';
 import { createAsyncThunk, createSlice, type SerializedError } from '@reduxjs/toolkit';
 
-import { getIngredientsApi } from '@api';
 import type { TIngredient } from '@utils-types';
 
 type TIngredientsState = {

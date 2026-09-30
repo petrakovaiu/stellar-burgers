@@ -2,8 +2,8 @@ import { LoginUI } from '@ui-pages';
 import { type SyntheticEvent, useState } from 'react';
 import { useLocation, useNavigate, type Location } from 'react-router-dom';
 
-import { loginUser } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { loginUser } from '../../services/userSlice';
 
 type TLocationState = {
   from?: Location;
@@ -25,9 +25,7 @@ export const Login = (): React.JSX.Element => {
       .then(() => {
         const state = location.state as TLocationState | null;
         const from = state?.from;
-        const destination = from
-          ? `${from.pathname}${from.search}${from.hash}`
-          : '/';
+        const destination = from ? `${from.pathname}${from.search}${from.hash}` : '/';
 
         void navigate(destination, { replace: true });
       })

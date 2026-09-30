@@ -1,5 +1,3 @@
-import { createAsyncThunk, createSlice, type SerializedError } from '@reduxjs/toolkit';
-
 import {
   forgotPasswordApi,
   getUserApi,
@@ -12,8 +10,11 @@ import {
   type TLoginData,
   type TRegisterData,
 } from '@api';
-import type { TUser } from '@utils-types';
+import { createAsyncThunk, createSlice, type SerializedError } from '@reduxjs/toolkit';
+
 import { deleteCookie, getCookie, setCookie } from '../utils/cookie';
+
+import type { TUser } from '@utils-types';
 
 type TUserState = {
   user: TUser | null;

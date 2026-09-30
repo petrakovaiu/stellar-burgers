@@ -2,8 +2,8 @@ import { ForgotPasswordUI } from '@ui-pages';
 import { useState, type SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { forgotPassword } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { forgotPassword } from '../../services/userSlice';
 
 export const ForgotPassword = (): React.JSX.Element => {
   const dispatch = useDispatch();

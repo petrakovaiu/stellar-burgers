@@ -2,9 +2,10 @@ import { BurgerConstructorUI } from '@ui';
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import type { TConstructorIngredient } from '@utils-types';
 import { clearOrderModal, createOrder } from '../../services/orderSlice';
 import { useDispatch, useSelector } from '../../services/store';
+
+import type { TConstructorIngredient } from '@utils-types';
 
 export const BurgerConstructor = (): React.JSX.Element | null => {
   const dispatch = useDispatch();

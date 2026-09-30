@@ -1,9 +1,10 @@
 import { ProfileUI } from '@ui-pages';
 import { type SyntheticEvent, useEffect, useState } from 'react';
 
-import type { TRegisterData } from '@api';
-import { updateUser } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { updateUser } from '../../services/userSlice';
+
+import type { TRegisterData } from '@api';
 
 export const Profile = (): React.JSX.Element => {
   const dispatch = useDispatch();

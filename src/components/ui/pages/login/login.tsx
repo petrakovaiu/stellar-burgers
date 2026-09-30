@@ -6,8 +6,13 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 
 import type { LoginUIProps } from './type';
+import type { Location } from 'react-router-dom';
 
 import styles from '../common.module.css';
+
+type AuthLocationState = {
+  from?: Location;
+};
 
 export const LoginUI = ({
   email,
@@ -18,6 +23,7 @@ export const LoginUI = ({
   setPassword,
 }: LoginUIProps): React.JSX.Element => {
   const location = useLocation();
+  const locationState = location.state as AuthLocationState | null;
 
   return (
     /*
@@ -61,11 +67,7 @@ export const LoginUI = ({
         </form>
         <div className={`pb-4 ${styles.question} text text_type_main-default`}>
           Вы - новый пользователь?
-          <Link
-            to="/register"
-            state={location.state}
-            className={`pl-2 ${styles.link}`}
-          >
+          <Link to="/register" state={locationState} className={`pl-2 ${styles.link}`}>
             Зарегистрироваться
           </Link>
         </div>

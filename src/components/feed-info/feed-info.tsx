@@ -1,7 +1,8 @@
 import { FeedInfoUI } from '@ui';
 
-import type { TFeedState, TOrder } from '@utils-types';
 import { useSelector } from '../../services/store';
+
+import type { TFeedState, TOrder } from '@utils-types';
 
 const getOrders = (orders: TOrder[], status: string): number[] =>
   orders

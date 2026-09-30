@@ -28,11 +28,7 @@ export const RegisterUI = ({
     <main className={styles.container}>
       <div className={`pt-6 ${styles.wrapCenter}`}>
         <h3 className="pb-6 text text_type_main-medium">Регистрация</h3>
-        <form
-          className={`pb-15 ${styles.form}`}
-          name="register"
-          onSubmit={handleSubmit}
-        >
+        <form className={`pb-15 ${styles.form}`} name="register" onSubmit={handleSubmit}>
           <>
             <div className="pb-6">
               <Input
@@ -79,11 +75,7 @@ export const RegisterUI = ({
         </form>
         <div className={`${styles.question} text text_type_main-default pb-6`}>
           Уже зарегистрированы?
-          <Link
-            to="/login"
-            state={location.state}
-            className={`pl-2 ${styles.link}`}
-          >
+          <Link to="/login" state={location.state} className={`pl-2 ${styles.link}`}>
             Войти
           </Link>
         </div>

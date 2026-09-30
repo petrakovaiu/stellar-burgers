@@ -27,10 +27,11 @@ import {
   type Location,
 } from 'react-router-dom';
 
-import type { AppContentProps } from './type';
 import { getIngredients } from '../../services/ingredientsSlice';
-import { checkUserAuth } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { checkUserAuth } from '../../services/userSlice';
+
+import type { AppContentProps } from './type';
 
 import '../../index.css';
 

@@ -1,7 +1,8 @@
+import { getFeedsApi, getOrdersApi } from '@api';
 import { createAsyncThunk, createSlice, type SerializedError } from '@reduxjs/toolkit';
 
-import { getFeedsApi, getOrdersApi } from '@api';
 import { createOrder } from './orderSlice';
+
 import type { TOrder } from '@utils-types';
 
 type TFeedState = {
@@ -28,9 +29,8 @@ const initialState: TFeedState = {
 
 export const getFeeds = createAsyncThunk('feed/getFeeds', async () => getFeedsApi());
 
-export const getProfileOrders = createAsyncThunk(
-  'feed/getProfileOrders',
-  async () => getOrdersApi()
+export const getProfileOrders = createAsyncThunk('feed/getProfileOrders', async () =>
+  getOrdersApi()
 );
 
 const feedSlice = createSlice({

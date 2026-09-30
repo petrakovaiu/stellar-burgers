@@ -2,8 +2,8 @@ import { ResetPasswordUI } from '@ui-pages';
 import { type SyntheticEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { resetPassword } from '../../services/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { resetPassword } from '../../services/userSlice';
 
 export const ResetPassword = (): React.JSX.Element => {
   const dispatch = useDispatch();

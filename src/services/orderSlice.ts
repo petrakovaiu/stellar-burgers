@@ -1,6 +1,6 @@
+import { getOrderByNumberApi, orderBurgerApi } from '@api';
 import { createAsyncThunk, createSlice, type SerializedError } from '@reduxjs/toolkit';
 
-import { getOrderByNumberApi, orderBurgerApi } from '@api';
 import type { TOrder } from '@utils-types';
 
 type TOrderState = {
