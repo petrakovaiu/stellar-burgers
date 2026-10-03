@@ -3,6 +3,13 @@ import type { Config } from 'jest';
 const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  clearMocks: true,
+  collectCoverageFrom: [
+    'src/services/ingredientsSlice.ts',
+    'src/services/constructorSlice.ts',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'html', 'lcov'],
   roots: ['<rootDir>/src'],
   testMatch: ['**/*.test.ts'],
   moduleNameMapper: {
