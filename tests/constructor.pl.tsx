@@ -1,11 +1,13 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page, type Locator } from '@playwright/test';
 
 const bunName = 'Тестовая булка';
 const mainName = 'Тестовая котлета';
+const mainImage =
+  'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2240%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22brown%22%2F%3E%3C%2Fsvg%3E';
 const sauceName = 'Тестовый соус';
 const accessToken = 'Bearer fake-access-token';
 
-const ingredientCard = (page: Page, name: string) =>
+const ingredientCard = (page: Page, name: string): Locator =>
   page.locator('li').filter({ has: page.getByRole('link', { name, exact: false }) });
 
 const addIngredient = async (page: Page, name: string): Promise<void> => {
@@ -63,6 +65,7 @@ test.describe('Добавление ингредиентов в конструк
 test.describe('Модальное окно ингредиента', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
     await ingredientCard(page, mainName).getByRole('link').click();
     await expect(page.getByRole('dialog')).toBeVisible();
   });
@@ -80,7 +83,7 @@ test.describe('Модальное окно ингредиента', () => {
     );
     await expect(
       modal.getByRole('img', { name: 'изображение ингредиента.', exact: true })
-    ).toHaveAttribute('src', /^data:image\/svg\+xml/);
+    ).toHaveAttribute('src', mainImage);
     for (const [label, value] of [
       ['Калории, ккал', '240'],
       ['Белки, г', '12'],

@@ -51,10 +51,7 @@ describe('Редьюсер burgerConstructor', () => {
       expect(first.payload.id).not.toHaveLength(0);
       expect(first.payload.id).not.toBe(second.payload.id);
       expect(state.ingredients).toEqual([first.payload, second.payload]);
-      expect(state.ingredients.map((item) => item._id)).toEqual([
-        main._id,
-        main._id,
-      ]);
+      expect(state.ingredients.map((item) => item._id)).toEqual([main._id, main._id]);
     });
   });
 
@@ -80,10 +77,7 @@ describe('Редьюсер burgerConstructor', () => {
       [2, 0, ['third', 'first', 'second']],
       [1, 1, ['first', 'second', 'third']],
     ])('перемещает начинку с индекса %s на %s', (fromIndex, toIndex, ids) => {
-      const state = reducer(
-        filledConstructor,
-        moveIngredient({ fromIndex, toIndex })
-      );
+      const state = reducer(filledConstructor, moveIngredient({ fromIndex, toIndex }));
       expect(state.ingredients.map((item) => item.id)).toEqual(ids);
       expect(state.bun).toEqual(filledConstructor.bun);
       expect(filledConstructor.ingredients.map((item) => item.id)).toEqual([
